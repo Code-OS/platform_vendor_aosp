@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The JDCTeam
+# Copyright (C) 2017 The Code OS Team
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ include vendor/aosp/sdclang/sdclang.mk
 
 include vendor/aosp/config/version.mk
 
-PRODUCT_BRAND ?= JDCTeam
+PRODUCT_BRAND ?= Code-OS
 
 # Use signing keys for user builds
 ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -103,9 +103,9 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/aosp/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
 
-# JDC-specific init file
+# Code-OS-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.jdc.rc
+    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.codeos.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
