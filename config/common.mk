@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The Code OS Team
+# Copyright (C) 2017 Code-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -105,7 +105,7 @@ PRODUCT_COPY_FILES += \
 
 # Code-OS-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.codeos.rc
+    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.cos.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
