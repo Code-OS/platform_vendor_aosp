@@ -1,6 +1,6 @@
 # Copyright (C) 2016 The Pure Nexus Project
 # Copyright (C) 2016 The JDCTeam
-# Copyright (C) 2016 The Code-OS Team
+# Copyright (C) 2017 Code-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,25 +15,25 @@
 # limitations under the License.
 
 #Code-OS Versioning
-Code-OS_VERSION = v1.0
+COS_VERSION = 1.0
 
-ifeq ($(Code-OS_BUILD_TYPE), SUPPORTED)
+ifeq ($(filter-out Official weekly,$(COS_BUILD_TYPE)),)
  PRODUCT_PACKAGES += \
-     Code-OSOTA
+     CodeOTA
 endif
 
-ifndef Code-OS_BUILD_TYPE
-    Code-OS_BUILD_TYPE := UNSUPPORTED
+ifndef COS_BUILD_TYPE
+    COS_BUILD_TYPE := Unofficial
 endif
 
-Code-OS_MOD_VERSION := Code-OS-$(Code-OS_VERSION)-$(Code-OS_BUILD)-$(shell date -u +%Y%m%d-%H%M)-$(Code-OS_BUILD_TYPE)
+COS_MOD_VERSION := Code-OS-$(COS_VERSION)-$(COS_BUILD)-$(shell date -u +%Y%m%d-%H%M)-$(COS_BUILD_TYPE)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.code-os.version=$(Code-OS_VERSION) \
-  ro.aos.releasetype=$(Code-OS_BUILD_TYPE) \
-  ro.mod.version=$(Code-OS_BUILD_TYPE)-$(Code-OS_VERSION)
+  ro.cos.version=$(COS_VERSION) \
+  ro.cos.releasetype=$(COS_BUILD_TYPE) \
+  ro.mod.version=$(COS_BUILD_TYPE)-$(COS_VERSION)
 
-Code-OS_DISPLAY_VERSION := $(Code-OS_MOD_VERSION)
+COS_DISPLAY_VERSION := $(COS_MOD_VERSION)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.code-os.display.version=$(Code-OS_DISPLAY_VERSION)
+  ro.cos.display.version=$(COS_DISPLAY_VERSION)
