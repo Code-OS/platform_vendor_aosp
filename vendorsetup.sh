@@ -14,5 +14,5 @@
 
 for device in $(cat vendor/cos/cos.devices)
 do
-add_lunch_combo aos_$device-userdebug
+add_lunch_combo cos_$device-userdebug
 done
