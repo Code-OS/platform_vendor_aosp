@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The JDCTeam
+# Copyright (C) 2017 Code-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [ -z ${variant} ]; then
-  export ARRAY=(user userdebug);
-fi
-
-for variant in "${ARRAY[@]}"; do
- for combo in $(ls vendor/aosp/products/jdc_*.mk | sed -e 's/vendor\/aosp\/products\///' -e "s/.mk/-$variant/"); do
- add_lunch_combo ${combo}
- done
+for device in $(cat vendor/cos/cos.devices)
+do
+add_lunch_combo aos_$device-userdebug
 done
