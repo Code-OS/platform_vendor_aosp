@@ -1,7 +1,7 @@
 # Target-specific configuration
 
 # Bring in Qualcomm helper macros
-include vendor/aosp/build/core/qcom_utils.mk
+include vendor/cos/build/core/qcom_utils.mk
 
 # Populate the qcom hardware variants in the project pathmap.
 define ril-set-path-variant
@@ -38,7 +38,7 @@ ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
 
     TARGET_USES_QCOM_BSP := true
 
-    # Tell HALs that we're compiling an AOSP build with an in-line kernel
+    # Tell HALs that we're compiling an Code-OS build with an in-line kernel
     TARGET_COMPILE_WITH_MSM_KERNEL := true
 
     ifneq ($(filter msm7x27a msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
