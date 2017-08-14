@@ -13,37 +13,37 @@
 # limitations under the License.
 
 # include definitions for SDCLANG
-include vendor/aosp/sdclang/sdclang.mk
+include vendor/cos/sdclang/sdclang.mk
 
-include vendor/aosp/config/version.mk
+include vendor/cos/config/version.mk
 
 PRODUCT_BRAND ?= Code-OS
 
 # Use signing keys for user builds
 ifeq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/aosp/.keys/release
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/cos/.keys/release
 endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aosp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aosp/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
+    vendor/cos/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/cos/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/cos/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
 
 # Bootanimation
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
+    vendor/cos/prebuilt/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
 
 DEVICE_PACKAGE_OVERLAYS += \
-    vendor/aosp/overlay/common \
-    vendor/aosp/overlay/dictionaries
+    vendor/cos/overlay/common \
+    vendor/cos/overlay/dictionaries
 
 # EXT4/F2FS format script
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/format.sh:install/bin/format.sh
+    vendor/cos/prebuilt/common/bin/format.sh:install/bin/format.sh
 
-# Custom JDCTeam packages
+# Custom Code-OS packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
     Jelly \
@@ -88,28 +88,28 @@ PRODUCT_PACKAGES += \
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/aosp/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/cos/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # For keyboard gesture typing
-ifneq ($(filter jdc_jflte jdc_onyx,$(TARGET_PRODUCT)),)
+ifneq ($(filter cos_jflte cos_onyx,$(TARGET_PRODUCT)),)
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinime.so
+    vendor/cos/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinime.so
 else
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinime.so
+    vendor/cos/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinime.so
 endif
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
+    vendor/cos/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
 
 # Code-OS-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.cos.rc
+    vendor/cos/prebuilt/common/etc/init.local.rc:root/init.cos.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/cos/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -127,7 +127,7 @@ PRODUCT_PACKAGES += \
 
 # Changelog
 PRODUCT_COPY_FILES += \
-    vendor/aosp/Changelog.md:system/etc/Changelog.md
+    vendor/cos/Changelog.md:system/etc/Changelog.md
 
 # Needed by some RILs and for some gApps packages
 PRODUCT_PACKAGES += \
@@ -144,7 +144,7 @@ USE_DEX2OAT_DEBUG ?= false
 # Magisk
 ifeq ($(WITH_ROOT),true)
  PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/magisk/Magisk.zip:install/magisk/Magisk.zip
+    vendor/cos/prebuilt/common/magisk/Magisk.zip:install/magisk/Magisk.zip
 else
 $(warning Root method is undefined, please use 'WITH_ROOT := true' to define it)
 endif
